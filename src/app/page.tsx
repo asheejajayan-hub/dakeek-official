@@ -40,9 +40,34 @@ export default function Home() {
    return (
       <main ref={container} className="relative min-h-screen w-full selection:bg-[#A18262] selection:text-white bg-[#FAFAF9] text-[#111] overflow-x-hidden">
 
-         {/* 1. HERO: The Empty Canvas (As Requested) */}
-         <section id="hero" className="relative h-screen w-full bg-[#FAFAF9] border-b border-[#E5E5E5]">
-            {/* Leaving empty for future redo */}
+         <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#FAFAF9]">
+            <HyperHero
+               color1="#dbdce1" // Slate-ish/Silver
+               color2="#f5f5f4" // Warm Grey
+               initialColor="#A18262" // Gold Accent
+            />
+
+            <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+               <p className="hero-sub font-mono text-xs md:text-sm uppercase tracking-[0.3em] mb-6 backdrop-blur-sm inline-block px-4 py-2 rounded-full border border-black/5 text-[#A18262] bg-white/50">
+                  Precision Home Services
+               </p>
+               <h1 className="hero-line-1 text-7xl md:text-[9rem] font-serif italic tracking-tighter mb-2 leading-[0.8] text-[#111]">
+                  Dakeek.
+               </h1>
+               <h2 className="hero-line-2 text-3xl md:text-5xl font-sans font-light tracking-tight mb-8 text-[#444]">
+                  The Science of Maintenance.
+               </h2>
+
+               <div className="hero-cta flex flex-col md:flex-row gap-4 justify-center items-center mt-12">
+                  <Link href="/book" className="group relative px-12 py-4 bg-[#111] text-white overflow-hidden rounded-full transition-all hover:scale-105">
+                     <span className="relative z-10 font-mono text-xs uppercase tracking-[0.2em]">Book Now</span>
+                     <div className="absolute inset-0 bg-[#A18262] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
+                  </Link>
+                  <Link href="/services" className="px-12 py-4 border border-[#111]/10 text-[#666] rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:bg-white/50 transition-colors backdrop-blur-sm">
+                     Explore Services
+                  </Link>
+               </div>
+            </div>
          </section>
 
          {/* 2. SOCIAL PROOF: General Trust */}
