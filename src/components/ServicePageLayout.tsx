@@ -42,15 +42,16 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
         };
 
         const handleSwipe = () => {
-            if (touchEndX < touchStartX - 50) {
+            if (touchEndX < touchStartX - 150) {
                 // Swipe Left -> Next
                 router.push(`/services/${nextKey}`);
             }
-            if (touchEndX > touchStartX + 50) {
+            if (touchEndX > touchStartX + 150) {
                 // Swipe Right -> Previous
                 router.push(`/services/${prevKey}`);
             }
         };
+
 
         window.addEventListener('keydown', handleKeyDown);
         window.addEventListener('touchstart', handleTouchStart);

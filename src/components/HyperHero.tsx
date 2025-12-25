@@ -166,10 +166,11 @@ function FluidPlane({ color1, color2 }: { color1: string; color2: string }) {
 
     return (
         <mesh ref={meshRef} scale={[viewport.width, viewport.height, 1]}>
-            <planeGeometry args={[1.5, 1.5, 128, 128]} /> {/* High poly for smooth ripples */}
+            <planeGeometry args={[1.5, 1.5, 64, 64]} /> {/* Optimized poly count for mobile */}
             <liquidMetalMaterial ref={materialRef} transparent />
         </mesh>
     );
+
 }
 
 interface HyperHeroProps {
@@ -181,9 +182,10 @@ interface HyperHeroProps {
 export default function HyperHero({ color1 = "#A18262", color2 = "#F0F0F0", initialColor }: HyperHeroProps) {
     return (
         <div
-            className="absolute inset-0 z-0 w-full h-full transition-colors duration-700"
-            style={{ backgroundColor: initialColor || color2 }} // Immediate background color match
+            className="absolute inset-0 z-0 w-full h-full transition-colors duration-700 pointer-events-none" // Enable scrolling through canvas
+            style={{ backgroundColor: initialColor || color2, touchAction: 'pan-y' }} // Immediate background color match
         >
+
             <Canvas
                 camera={{ position: [0, 0, 1.5], fov: 75 }}
                 dpr={[1, 1.5]} // Reduced from [1, 2] for performance

@@ -194,11 +194,16 @@ export default function Header() {
                             className="mt-auto pb-12 space-y-4"
                         >
                             <div className="h-[1px] w-full bg-[#E5E5E5] mb-6" />
-                            <p className="text-[#86868b] text-sm uppercase tracking-widest">Get in Touch</p>
-                            <p className="text-xl text-[#111] font-mono">800-DAKEEK</p>
-                            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="block w-full py-4 bg-[#111] text-white text-center font-bold uppercase tracking-widest mt-4">
-                                Book Now
-                            </Link>
+                            <a
+                                href="https://wa.me/971500000000"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block w-full py-4 bg-[#25D366] text-white text-center font-bold uppercase tracking-widest mt-4"
+                            >
+                                WhatsApp Now
+                            </a>
+
                         </motion.div>
                     </motion.div>
                 )}
