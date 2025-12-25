@@ -1,6 +1,6 @@
 "use client";
 
-import Hero2D from "../../components/Hero2D";
+
 import { Check, X, Shield, Award, Heart } from "lucide-react";
 import Link from "next/link";
 
@@ -9,12 +9,15 @@ export default function AboutPage() {
         <main className="bg-[#FAFAF9] min-h-screen text-[#111]">
 
             {/* 1. HERO */}
-            <section className="relative h-[60vh] flex flex-col justify-end px-[8vw] pb-24 border-b border-[#E5E5E5] overflow-hidden">
-                <div className="absolute inset-0 opacity-50 pointer-events-none">
-                    <Hero2D />
-                </div>
-                <h1 className="relative z-10 text-[8vw] font-serif italic leading-none mb-4">The Academy.</h1>
-                <p className="relative z-10 text-xl font-mono uppercase tracking-widest text-[#86868b]">Masters of Craft</p>
+            <section className="relative h-[60vh] flex flex-col justify-end px-[8vw] pb-24 border-b border-[#E5E5E5] overflow-hidden bg-[#FAFAF9]">
+                <div className="absolute top-0 right-0 w-[50vw] h-full opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-multiply"></div>
+
+                <h1 className="relative z-10 text-[8vw] font-serif italic leading-none mb-4 text-[#111]">
+                    The Academy.
+                </h1>
+                <p className="relative z-10 text-xl font-mono uppercase tracking-widest text-[#A18262]">
+                    Masters of Craft
+                </p>
             </section>
 
             {/* 2. THE HOOK (ELI5) */}

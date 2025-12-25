@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Wrench, Thermometer, Wind, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+
 
 const services = [
     {
@@ -99,12 +101,14 @@ function ServiceSection({ service, index }: { service: typeof services[0], index
                 >
                     <div className="relative w-full h-full overflow-hidden rounded-2xl bg-blue-900/20 border border-white/10 shadow-2xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent mix-blend-overlay z-10" />
-                        <img
+                        <Image
                             src={service.image}
                             alt={service.title}
-                            className="w-full h-full object-cover transition-all duration-700"
+                            fill
+                            className="object-cover transition-all duration-700"
                             sizes="(max-width: 768px) 100vw, 50vw"
                         />
+
                         <div className="absolute inset-0 border border-white/10" />
                     </div>
                 </motion.div>

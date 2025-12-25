@@ -1,6 +1,6 @@
 "use client";
 
-import Hero2D from "../../components/Hero2D";
+
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 
@@ -38,12 +38,11 @@ export default function FAQPage() {
         <main className="bg-[#FAFAF9] min-h-screen text-[#111]">
 
             {/* 1. HERO */}
-            <section className="relative h-[50vh] flex flex-col justify-end px-[8vw] pb-24 border-b border-[#E5E5E5] overflow-hidden">
-                <div className="absolute inset-0 opacity-50 pointer-events-none">
-                    <Hero2D />
-                </div>
-                <h1 className="relative z-10 text-[8vw] font-serif italic leading-none mb-4">Questions?</h1>
-                <p className="relative z-10 text-xl font-mono uppercase tracking-widest text-[#86868b]">Concierge Desk</p>
+            <section className="relative h-[50vh] flex flex-col justify-end px-[8vw] pb-24 border-b border-[#E5E5E5] overflow-hidden bg-[#FAFAF9]">
+                <div className="absolute top-0 right-0 w-[50vw] h-full opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-multiply"></div>
+
+                <h1 className="relative z-10 text-[8vw] font-serif italic leading-none mb-4 text-[#111]">Questions?</h1>
+                <p className="relative z-10 text-xl font-mono uppercase tracking-widest text-[#A18262]">Concierge Desk</p>
             </section>
 
             {/* 2. THE HOOK (ELI5) */}

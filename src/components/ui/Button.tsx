@@ -1,6 +1,7 @@
 "use client";
 
-import React, { ButtonHTMLAttributes, forwardRef } from "react";
+import React, { forwardRef } from "react";
+
 import { motion, HTMLMotionProps } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";

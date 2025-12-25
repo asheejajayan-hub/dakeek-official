@@ -2,16 +2,17 @@
 // HMR Trigger
 
 import { IconAC, IconDucts, IconKitchen, IconElectrical, IconPlumbing, IconTanks, IconStoves, IconGas, IconHVAC, IconAMC, IconPainting, IconEmergency } from "../components/ServiceIcons";
-import { ArrowRight, ShieldCheck, HeartHandshake, Sparkles, Award } from "lucide-react";
+import { ShieldCheck, HeartHandshake, Sparkles, Award } from "lucide-react";
+
 import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Hero2D from "../components/Hero2D"; // Keeping for fallback/reference if needed
+
 import HyperHero from "../components/HyperHero"; // The 2026 Edition
-import Image from "next/image";
 import ServiceCard from "../components/ServiceCard";
+
 
 export default function Home() {
    const container = useRef(null);
@@ -44,7 +45,7 @@ export default function Home() {
             <HyperHero
                color1="#dbdce1" // Slate-ish/Silver
                color2="#f5f5f4" // Warm Grey
-               initialColor="#A18262" // Gold Accent
+               initialColor="#dbdce1" // PLATINUM/SILVER - Fixed per user feedback
             />
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -59,7 +60,7 @@ export default function Home() {
                </h2>
 
                <div className="hero-cta flex flex-col md:flex-row gap-4 justify-center items-center mt-12">
-                  <Link href="/book" className="group relative px-12 py-4 bg-[#111] text-white overflow-hidden rounded-full transition-all hover:scale-105">
+                  <Link href="/contact" className="group relative px-12 py-4 bg-[#111] text-white overflow-hidden rounded-full transition-all hover:scale-105">
                      <span className="relative z-10 font-mono text-xs uppercase tracking-[0.2em]">Book Now</span>
                      <div className="absolute inset-0 bg-[#A18262] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                   </Link>

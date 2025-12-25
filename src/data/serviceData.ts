@@ -1,6 +1,6 @@
 import {
     Wind, Droplets, Zap, Paintbrush,
-    Fan, Cylinder, Flame, Gauge,
+    Fan, Flame, Cylinder, Gauge,
     ChefHat, ThermometerSnowflake, CalendarClock, ShieldAlert,
     Wrench, Thermometer,
     Droplet, Activity,
@@ -8,12 +8,17 @@ import {
     Sparkles, ShieldCheck
 } from "lucide-react";
 
+
+
 export interface ServiceDetail {
     id: string;
     title: string;
     subtitle: string;
     description: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: any;
+
+
     details: string[];
     image: string;
 }

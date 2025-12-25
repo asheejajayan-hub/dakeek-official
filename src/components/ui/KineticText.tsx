@@ -18,7 +18,10 @@ export default function KineticText({ children, className, as: Component = "h1",
     const words = children.split(" ");
 
     // Cast Component to any to avoid strict polymorphic type issues with refs and children
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const Tag = Component as any;
+
+
 
     return (
         <Tag ref={ref} className={cn("flex flex-wrap gap-x-[0.3em]", className)} {...props}>

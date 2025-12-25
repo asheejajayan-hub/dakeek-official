@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useMemo, Suspense } from "react";
+import { useRef, Suspense } from "react";
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
-import { shaderMaterial, Environment, Float, Stars } from "@react-three/drei";
+import { shaderMaterial, Environment } from "@react-three/drei";
+
 import * as THREE from "three";
 
 // --- GLSL SHADERS ---
@@ -144,17 +145,18 @@ extend({ LiquidMetalMaterial });
 
 function FluidPlane({ color1, color2 }: { color1: string; color2: string }) {
     const meshRef = useRef<THREE.Mesh>(null);
-    const materialRef = useRef<any>(null);
+    const materialRef = useRef<THREE.ShaderMaterial>(null);
 
     const { viewport } = useThree();
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         if (materialRef.current) {
-            materialRef.current.uTime = state.clock.elapsedTime;
+            materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
             // Update colors dynamically if props change
-            materialRef.current.uColor1 = new THREE.Color(color1);
-            materialRef.current.uColor2 = new THREE.Color(color2);
+            materialRef.current.uniforms.uColor1.value = new THREE.Color(color1);
+            materialRef.current.uniforms.uColor2.value = new THREE.Color(color2);
         }
+
 
         // Subtle breathing motion for the mesh itself - VERY SLOW
         if (meshRef.current) {

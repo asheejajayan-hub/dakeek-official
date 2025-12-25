@@ -19,6 +19,26 @@ export default function Header() {
     const [mounted, setMounted] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+    useEffect(() => {
+        const handler = (e: any) => {
+            e.preventDefault();
+            setDeferredPrompt(e);
+        };
+        window.addEventListener('beforeinstallprompt', handler);
+        return () => window.removeEventListener('beforeinstallprompt', handler);
+    }, []);
+
+    const handleInstallClick = async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            setDeferredPrompt(null);
+        }
+    };
+
 
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -28,8 +48,10 @@ export default function Header() {
     });
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
         if ("scrollRestoration" in history) {
+
             history.scrollRestoration = "manual";
         }
         window.scrollTo(0, 0);
@@ -63,14 +85,14 @@ export default function Header() {
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="relative z-50 text-2xl font-bold tracking-tighter text-slate-900"
+                    className="relative z-50 text-3xl font-serif font-bold tracking-tighter text-[#111]"
                     onClick={() => setIsMenuOpen(false)}
                 >
-                    DAKEEK
+                    Dakeek.
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:block">
+                <nav className="hidden md:flex items-center gap-8">
                     <ul className="flex gap-8 text-sm font-medium tracking-wide">
                         {links.map((link) => {
                             const isActive = mounted && pathname === link.href;
@@ -79,15 +101,15 @@ export default function Header() {
                                     <Link
                                         href={link.href}
                                         className={cn(
-                                            "relative z-10 transition-colors duration-300 hover:text-blue-600",
-                                            isActive ? "text-slate-900 font-bold" : "text-slate-600"
+                                            "relative z-10 transition-colors duration-300 hover:text-[#A18262]",
+                                            isActive ? "text-[#111] font-bold" : "text-[#666] hover:text-[#A18262]"
                                         )}
                                     >
                                         {link.label}
                                     </Link>
                                     <span
                                         className={cn(
-                                            "absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600 transform origin-left transition-transform duration-300 ease-out",
+                                            "absolute -bottom-1 left-0 w-full h-[1px] bg-[#A18262] transform origin-left transition-transform duration-300 ease-out",
                                             isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                                         )}
                                     />
@@ -95,7 +117,18 @@ export default function Header() {
                             );
                         })}
                     </ul>
+
+                    {/* Install App Button */}
+                    {deferredPrompt && (
+                        <button
+                            onClick={handleInstallClick}
+                            className="bg-[#111] text-white text-xs px-4 py-2 rounded-full font-mono uppercase tracking-widest hover:bg-[#A18262] transition-colors"
+                        >
+                            Get App
+                        </button>
+                    )}
                 </nav>
+
 
                 {/* Mobile Menu Toggle (Custom Animated Icon) */}
                 <button
@@ -105,21 +138,21 @@ export default function Header() {
                 >
                     <motion.span
                         animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                        className="w-8 h-[2px] bg-slate-900 block rounded-full"
+                        className="w-8 h-[2px] bg-[#111] block rounded-full"
                     />
                     <motion.span
                         animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                        className="w-8 h-[2px] bg-slate-900 block rounded-full"
+                        className="w-8 h-[2px] bg-[#111] block rounded-full"
                     />
                     <motion.span
                         animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                        className="w-8 h-[2px] bg-slate-900 block rounded-full"
+                        className="w-8 h-[2px] bg-[#111] block rounded-full"
                     />
                 </button>
 
                 {/* Mobile Scroller */}
                 <motion.div
-                    className="absolute bottom-0 left-0 h-[2px] bg-blue-500 origin-left z-50"
+                    className="absolute bottom-0 left-0 h-[2px] bg-[#A18262] origin-left z-50"
                     style={{ scaleX, width: "100%" }}
                 />
             </header>
@@ -132,7 +165,7 @@ export default function Header() {
                         animate={{ opacity: 1, y: "0%" }}
                         exit={{ opacity: 0, y: "-100%" }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed inset-0 z-40 bg-white flex flex-col pt-32 px-6 md:hidden"
+                        className="fixed inset-0 z-40 bg-[#FAFAF9] flex flex-col pt-32 px-6 md:hidden"
                     >
                         <div className="flex flex-col gap-8">
                             {links.map((link, index) => (
@@ -145,7 +178,7 @@ export default function Header() {
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-4xl font-serif text-slate-900 hover:text-blue-600 transition-colors"
+                                        className="text-4xl font-serif text-[#111] hover:text-[#A18262] transition-colors"
                                     >
                                         {link.label}
                                     </Link>
@@ -160,10 +193,10 @@ export default function Header() {
                             transition={{ delay: 0.5 }}
                             className="mt-auto pb-12 space-y-4"
                         >
-                            <div className="h-[1px] w-full bg-slate-100 mb-6" />
-                            <p className="text-slate-500 text-sm uppercase tracking-widest">Get in Touch</p>
-                            <p className="text-xl text-slate-900 font-mono">800-DAKEEK</p>
-                            <Link href="/book" onClick={() => setIsMenuOpen(false)} className="block w-full py-4 bg-blue-600 text-white text-center font-bold uppercase tracking-widest mt-4">
+                            <div className="h-[1px] w-full bg-[#E5E5E5] mb-6" />
+                            <p className="text-[#86868b] text-sm uppercase tracking-widest">Get in Touch</p>
+                            <p className="text-xl text-[#111] font-mono">800-DAKEEK</p>
+                            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="block w-full py-4 bg-[#111] text-white text-center font-bold uppercase tracking-widest mt-4">
                                 Book Now
                             </Link>
                         </motion.div>

@@ -12,7 +12,10 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Container = forwardRef<HTMLElement, ContainerProps>(
     ({ as = "div", className, children, ...props }, ref) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const Component = as as any;
+
+
         return (
             <Component
                 ref={ref}

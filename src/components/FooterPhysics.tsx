@@ -245,7 +245,8 @@ export default function FooterPhysics({ onDragStart, onDragEnd, color = "#E5E5E5
             Matter.World.clear(world, false);
             Matter.Engine.clear(engine);
         };
-    }, [onDragStart, onDragEnd, forceDrop]); // Empty dependency array, forceDrop is stable via useCallback if deps are
+    }, [onDragStart, onDragEnd, forceDrop, color]); // Empty dependency array, forceDrop is stable via useCallback if deps are
+
 
     return (
         <div

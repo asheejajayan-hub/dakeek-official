@@ -140,7 +140,7 @@ export default function Services() {
             id: "11",
             title: "Emergency 24/7",
             tagline: "Rapid Response",
-            problem: "power outage, burst pipe, major gas leak, or AC failure in summer.",
+            problem: "Power outage, burst pipe, major gas leak, or AC failure in summer.",
             solution: "Priority dispatch motorcycle unit for sub-45 minute arrival.",
             specs: [
                 { label: "Time", value: "< 45 Mins" },

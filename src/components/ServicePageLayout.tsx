@@ -1,8 +1,10 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import HyperHero from "./HyperHero";
 import TechSpecs from "./TechSpecs";
 import ServiceNavigation from "./ServiceNavigation";
 import Link from "next/link";
+import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import { ArrowRight, ShieldCheck, ChevronDown, Wind } from "lucide-react";
 import { motion } from "framer-motion";
@@ -148,11 +150,13 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
                             </ul>
                         </div>
                         <div className="relative aspect-square md:aspect-video bg-white rounded-2xl overflow-hidden shadow-xl">
-                            <img
+                            <Image
                                 src={data.addOn.image}
                                 alt={data.addOn.title}
-                                className="absolute inset-0 w-full h-full object-cover"
+                                fill
+                                className="object-cover"
                             />
+
                         </div>
                     </div>
                 </section>
@@ -172,8 +176,9 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
                     <ShieldCheck className={`w-16 h-16 mb-8 ${data.theme.primaryText}`} />
                     <h3 className="text-4xl font-serif text-slate-900 mb-6">The Dakeek Guarantee</h3>
                     <p className="text-xl text-slate-500 max-w-2xl mb-12">
-                        We don't just fix it; we certify it. Every service comes with a full warranty and a direct line to our support team.
+                        We don&apos;t just fix it; we certify it. Every service comes with a full warranty and a direct line to our support team.
                     </p>
+
                     <Link
                         href="/book"
                         className="w-full md:w-auto group relative inline-flex justify-center items-center gap-4 px-12 py-6 bg-slate-900 text-white overflow-hidden rounded-sm"
