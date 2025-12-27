@@ -182,33 +182,33 @@ export default function Home() {
 
          {/* 6. HOW IT WORKS (Human Process) - Compact Revamp */}
          <section className="w-full bg-[#FAFAF9] pt-0 pb-16 border-b border-[#E5E5E5] overflow-hidden">
-            <div className="px-[8vw] mb-12">
+            <div className="px-[8vw] mb-12 text-center">
                <span className="block font-mono text-xs text-[#A18262] uppercase tracking-[0.2em] mb-4">How it Works</span>
                <h2 className="text-5xl font-serif text-[#111]">Simplicity Itself.</h2>
             </div>
 
             <div className="px-[8vw] grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-b border-[#E5E5E5]">
                {/* Step 01 */}
-               <div className="py-10 pr-8 border-b md:border-b-0 md:border-r border-[#E5E5E5] group">
+               <div className="py-10 px-8 border-b md:border-b-0 md:border-r border-[#E5E5E5] group text-center">
                   <span className="block text-5xl font-serif text-[#E5E5E5] group-hover:text-[#A18262] transition-colors duration-500 mb-4">01</span>
                   <h3 className="text-lg font-bold tracking-tight mb-2">Connect</h3>
-                  <p className="text-[#666] text-sm font-light leading-relaxed">
+                  <p className="text-[#666] text-sm font-light leading-relaxed max-w-xs mx-auto">
                      Tell us what you need. A dedicated coordinator will listen and arrange everything clearly.
                   </p>
                </div>
                {/* Step 02 */}
-               <div className="py-10 px-0 md:px-8 border-b md:border-b-0 md:border-r border-[#E5E5E5] group">
+               <div className="py-10 px-8 border-b md:border-b-0 md:border-r border-[#E5E5E5] group text-center">
                   <span className="block text-5xl font-serif text-[#E5E5E5] group-hover:text-[#A18262] transition-colors duration-500 mb-4">02</span>
                   <h3 className="text-lg font-bold tracking-tight mb-2">Restore</h3>
-                  <p className="text-[#666] text-sm font-light leading-relaxed">
+                  <p className="text-[#666] text-sm font-light leading-relaxed max-w-xs mx-auto">
                      We arrive on time, fix the issue quietly, and clean up afterwards.
                   </p>
                </div>
                {/* Step 03 */}
-               <div className="py-10 pl-0 md:pl-8 group">
+               <div className="py-10 px-8 group text-center">
                   <span className="block text-5xl font-serif text-[#E5E5E5] group-hover:text-[#A18262] transition-colors duration-500 mb-4">03</span>
                   <h3 className="text-lg font-bold tracking-tight mb-2">Relax</h3>
-                  <p className="text-[#666] text-sm font-light leading-relaxed">
+                  <p className="text-[#666] text-sm font-light leading-relaxed max-w-xs mx-auto">
                      Your home is back to normal. We provide a full report so you can have complete peace of mind.
                   </p>
                </div>
@@ -217,13 +217,13 @@ export default function Home() {
 
          {/* 5. THE EXPERIENCE (Human/General) - Restored with New Icons */}
          <section className="w-full bg-[#111] text-[#FAFAF9] py-16 px-[8vw] border-b border-[#333]">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-               <div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+               <div className="text-center lg:text-left">
                   <span className="block font-mono text-xs text-[#A18262] uppercase tracking-[0.2em] mb-6">The Experience</span>
                   <h2 className="text-5xl md:text-7xl font-serif italic font-light mb-12">
                      Simply <br /> Better.
                   </h2>
-                  <p className="text-[#888] text-lg leading-relaxed max-w-md">
+                  <p className="text-[#888] text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
                      We understand that inviting someone into your home is a matter of trust.
                      That is why we focus on being respectful, clean, and invisible. We fix the problem, and then we disappear.
                   </p>
@@ -231,7 +231,7 @@ export default function Home() {
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#333] border border-[#333]">
                   {/* Respect */}
-                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors">
+                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors text-center flex flex-col items-center">
                      <HeartHandshake className="w-8 h-8 text-[#A18262]" />
                      <div>
                         <h4 className="font-serif italic text-2xl mb-2">Respect</h4>
@@ -241,7 +241,7 @@ export default function Home() {
                      </div>
                   </div>
                   {/* Privacy */}
-                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors">
+                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors text-center flex flex-col items-center">
                      <ShieldCheck className="w-8 h-8 text-[#A18262]" />
                      <div>
                         <h4 className="font-serif italic text-2xl mb-2">Privacy</h4>
@@ -251,7 +251,7 @@ export default function Home() {
                      </div>
                   </div>
                   {/* Cleanliness */}
-                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors">
+                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors text-center flex flex-col items-center">
                      <Sparkles className="w-8 h-8 text-[#A18262]" />
                      <div>
                         <h4 className="font-serif italic text-2xl mb-2">Cleanliness</h4>
@@ -261,7 +261,7 @@ export default function Home() {
                      </div>
                   </div>
                   {/* Quality */}
-                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors">
+                  <div className="bg-[#1A1A1A] p-10 space-y-6 hover:bg-[#222] transition-colors text-center flex flex-col items-center">
                      <Award className="w-8 h-8 text-[#A18262]" />
                      <div>
                         <h4 className="font-serif italic text-2xl mb-2">Quality</h4>
