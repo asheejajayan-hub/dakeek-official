@@ -30,6 +30,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://dakeek-official.vercel.app'),
   title: "DAKEEK | Precision Technical Services",
   description: "Expert AC, Electrical, and Plumbing services in Dubai. Licensed, Certified, and 24/7 Operational. Specialized in luxury residential maintenance with ISO 9001:2015 processes.",
   keywords: ["AC Maintenance Dubai", "Emergency Plumber Dubai", "Electrical Services", "Luxury Home Maintenance", "Duct Cleaning", "O General Service", "Carrier Service", "Dubai Civil Defense approved"],

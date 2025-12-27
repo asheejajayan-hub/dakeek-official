@@ -2,179 +2,190 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Check, Plus, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, ShieldCheck, ArrowRight, ChevronDown } from "lucide-react";
+import SectionWrapper from "@/components/about/SectionWrapper";
+import ProcessStepper from "@/components/about/ProcessStepper";
+import HyperHero from "@/components/hero/HyperHero";
+import { serviceData } from "@/data/serviceData";
+import Image from "next/image";
 
-export default function Services() {
-    const services = [
-        {
-            id: "01",
-            title: "AC Services",
-            tagline: "Climate Calibration",
-            problem: "Blowing warm air, unusual noise, water dropping, or high DEWA bills.",
-            solution: "We do not just clean filters. We calibrate the entire thermodynamic cycle.",
-            specs: [
-                { label: "Gas Pressure", value: "R410A / R22 Check" },
-                { label: "Airflow", value: "Anemometer Test" },
-                { label: "Coil Status", value: "Chemical Wash" },
-            ],
-            tools: "Fluke 117 Multimeter, Testo 550 Digital Manifold"
-        },
-        {
-            id: "02",
-            title: "Plumbing",
-            tagline: "Fluid Generative Flow",
-            problem: "Hidden leaks, low water pressure, blocked drains, or water hammer noises.",
-            solution: "Hydraulic balancing and leak detection using ultrasonic sensors.",
-            specs: [
-                { label: "Pump Pressure", value: "Bar Config" },
-                { label: "Heater", value: "Element Check" },
-                { label: "Drainage", value: "Snake & Cam" },
-            ],
-            tools: "Ridgid Snake, Flir Thermal Camera"
-        },
-        {
-            id: "03",
-            title: "Electrical",
-            tagline: "Power Distribution",
-            problem: "Tripping breakers, flickering lights, burning smell, or sparking outlets.",
-            solution: "Load balancing and thermal scanning of distribution boards.",
-            specs: [
-                { label: "Load", value: "Amperage Test" },
-                { label: "Safety", value: "ELCB Trip Test" },
-                { label: "Wiring", value: "Insulation Check" },
-            ],
-            tools: "Megger Insulation Tester, Flir C5"
-        },
-        {
-            id: "04",
-            title: "Cleaning",
-            tagline: "Hygiene & Sanitation",
-            problem: "Dust accumulation in ducts, moldy smells, unhygienic water tanks, or post-construction mess.",
-            solution: "Deep sanitization using rotary brushes, organic fogging, and municipality-grade disinfectants.",
-            specs: [
-                { label: "Ducts", value: "Rotary Brush" },
-                { label: "Tanks", value: "Chlorination" },
-                { label: "Deep Clean", value: "Steaming" },
-            ],
-            tools: "Rotomax Duct Machine, Industrial Steamers"
-        },
-        {
-            id: "05",
-            title: "Gas Systems",
-            tagline: "Hydrocarbon Safety",
-            problem: "Gas smell, stove clicking but not lighting, or low flame intensity.",
-            solution: "Certified pressure testing and solenoid valve replacement.",
-            specs: [
-                { label: "Leak Test", value: "Soap & Digital" },
-                { label: "Parts", value: "LPG Certified" },
-                { label: "Compliance", value: "Civil Defense" },
-            ],
-            tools: "Gas Sniffer, Manometer"
-        },
-        {
-            id: "06",
-            title: "Stove Repair",
-            tagline: "Thermal Precision",
-            problem: "Oven not heating evenly, burner malfunctions, or glass door issues.",
-            solution: "Thermocouple calibration and burner nozzle deep cleaning.",
-            specs: [
-                { label: "Ignition", value: "Spark Test" },
-                { label: "Flame", value: "Blue/Stable" },
-                { label: "Safety", value: "Shut-off Check" },
-            ],
-            tools: "Multimeter, Wrenches"
-        },
-        {
-            id: "07",
-            title: "Emergency 24/7",
-            tagline: "Rapid Response",
-            problem: "Power outage, burst pipe, major gas leak, or AC failure in summer.",
-            solution: "Priority dispatch motorcycle unit for sub-45 minute arrival.",
-            specs: [
-                { label: "Time", value: "< 45 Mins" },
-                { label: "Availability", value: "24/7/365" },
-                { label: "Type", value: "Critical" },
-            ],
-            tools: "Rapid Response Kit"
-        }
-    ];
+// Helper to get the first image from details as the "Cover"
+const getServiceImage = (slug: string) => {
+    const service = serviceData[slug];
+    return service?.details?.[0]?.image || "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80";
+};
+
+export default function ServicesPage() {
+    // List of services in order
+    const serviceKeys = ["ac", "plumbing", "electrical", "cleaning", "gas", "stoves", "handyman", "emergency"];
 
     return (
-        <main className="min-h-screen w-full premium-bg text-[#111] pt-32 pb-20 relative">
-            <div className="fixed top-32 left-[5vw] w-fit z-10 hidden lg:block">
-                <Link href="/" className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#86868b] hover:text-[#111] transition-colors mb-12">
-                    <ArrowLeft className="w-3 h-3" /> Back
-                </Link>
-                <div className="space-y-4">
-                    {services.map(s => (
-                        <Link key={s.id} href={`#svc-${s.id}`} className="block text-xs font-mono text-[#86868b] hover:text-[#A18262] transition-colors">{s.id} {'//'} {s.title}</Link>
-                    ))}
-                </div>
-            </div>
+        <main className="min-h-screen bg-[#FAFAF9] text-[#111] overflow-x-hidden selection:bg-[#A18262] selection:text-white">
 
-            <div className="w-full max-w-4xl mx-auto px-[5vw] lg:px-0">
-                <header className="mb-32 border-b border-[#E5E5E5] pb-12">
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#86868b] mb-4 block">
-                        Technical Specifications
+            {/* 1. HERO: The Standard - PLATINUM/SILVER */}
+            <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#F3F4F6] border-b border-[#E5E5E5]">
+                <HyperHero
+                    color1="#D1D5DB" // Platinum
+                    color2="#F3F4F6" // Silver Mist
+                    initialColor="#F3F4F6"
+                />
+
+                <SectionWrapper className="max-w-4xl mx-auto text-center relative z-10 px-6">
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#111] mb-6 block backdrop-blur-sm bg-white/30 inline-block px-4 py-2 rounded-full border border-white/50">
+                        The Dakeek Standard
                     </span>
-                    <h1 className="text-6xl font-serif font-light mb-8 text-premium-shadow">
-                        The Manual.
+                    <h1 className="text-5xl lg:text-8xl font-serif leading-[1.0] mb-8 text-[#111] tracking-tighter">
+                        Excellence is not <br />
+                        <span className="italic text-[#666]">an accident.</span>
                     </h1>
-                    <p className="text-lg font-light text-[#444] max-w-xl leading-relaxed">
-                        We don&apos;t guess. We measure. Below are the standard operating procedures for our core interventions.
+                    <p className="text-xl font-light text-[#444] max-w-2xl mx-auto leading-relaxed bg-white/20 backdrop-blur-md p-6 rounded-2xl border border-white/30 shadow-lg lg:shadow-none lg:bg-transparent lg:border-none lg:p-0">
+                        Every service we offer is backed by 500 hours of training, fully employed technicians, and a cast-iron 30-day guarantee.
                     </p>
-                </header>
+                </SectionWrapper>
 
-                <div className="space-y-48">
-                    {services.map((svc) => (
-                        <section key={svc.id} id={`svc-${svc.id}`} className="scroll-mt-32 relative group">
-                            {/* Decorative ID */}
-                            <span className="absolute -left-12 top-0 text-8xl font-serif font-bold text-[#E5E5E5] -z-10 select-none opacity-50 group-hover:text-[#F0F0F0] transition-colors">
-                                {svc.id}
-                            </span>
+                {/* Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, y: [0, 10, 0] }}
+                    transition={{ delay: 1, duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 text-[#111]/30"
+                >
+                    <ChevronDown size={32} />
+                </motion.div>
+            </section>
 
-                            <div className="mb-8">
-                                <h2 className="text-4xl font-serif italic mb-2">{svc.title}</h2>
-                                <span className="font-mono text-xs text-[#A18262] uppercase tracking-widest">{svc.tagline}</span>
-                            </div>
+            {/* 2. THE PROCESS (Peace of Mind) */}
+            <section className="py-24 lg:py-32 px-[5vw] lg:px-[8vw] bg-white border-b border-[#E5E5E5]">
+                <div className="max-w-5xl mx-auto">
+                    <SectionWrapper className="text-center mb-16">
+                        <h2 className="text-4xl font-serif text-[#111] mb-4">Peace of mind, standard.</h2>
+                        <p className="text-[#666] font-light max-w-lg mx-auto">
+                            We engineered a process that removes the anxiety of letting a stranger into your home.
+                        </p>
+                    </SectionWrapper>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                                <div>
-                                    <h4 className="text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                                        <Plus className="w-3 h-3 text-red-400" /> The Problem
-                                    </h4>
-                                    <p className="text-sm text-[#666] leading-relaxed">{svc.problem}</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                                        <Check className="w-3 h-3 text-emerald-500" /> Our Solution
-                                    </h4>
-                                    <p className="text-sm text-[#111] leading-relaxed">{svc.solution}</p>
-                                </div>
-                            </div>
+                    <ProcessStepper steps={[
+                        { id: 1, label: "You Book a Slot", description: "Choose a time that works for you. No 4-hour windows. Precise arrival times.", icon: Check },
+                        { id: 2, label: "We Assign a Master", description: "Our system picks the best technician for your specific problem, not just whoever is free.", icon: ShieldCheck },
+                        { id: 3, label: "Identity Verification", description: "You get a photo and name of who is coming before they knock. No surprises.", icon: ShieldCheck },
+                        { id: 4, label: "White-Glove Service", description: "Shoe covers on. Floor protection down. We explain everything before we start.", icon: Check },
+                        { id: 5, label: "The Follow-up", description: "We don't disappear. We check in to make sure the fix held up.", icon: Check }
+                    ]} />
+                </div>
+            </section>
 
-                            {/* Specs Table */}
-                            <div className="bg-white border border-[#E5E5E5] p-8 mb-8">
-                                <h4 className="text-xs font-mono text-[#86868b] uppercase tracking-widest mb-6 border-b border-[#E5E5E5] pb-2">Technical Data</h4>
-                                <div className="grid grid-cols-3 gap-8">
-                                    {svc.specs.map((spec, i) => (
-                                        <div key={i}>
-                                            <span className="block text-xs text-[#86868b] mb-1">{spec.label}</span>
-                                            <span className="block text-sm font-medium">{spec.value}</span>
+            {/* 3. RICH CATALOG (Zig-Zag with Alternating Backgrounds) */}
+            {/* Removed the single container 'section' in favor of per-service sections */}
+            <div className="flex flex-col">
+                {serviceKeys.map((slug, index) => {
+                    const service = serviceData[slug];
+                    const isEven = index % 2 === 0;
+                    const coverImage = getServiceImage(slug);
+
+                    // Alternating Backgrounds: White vs Warm Alabaster
+                    const bgClass = isEven ? "bg-white" : "bg-[#FAFAF9]";
+
+                    return (
+                        <section key={slug} className={`py-24 px-[5vw] lg:px-[8vw] ${bgClass}`}>
+                            <div className="max-w-7xl mx-auto">
+                                <SectionWrapper delay={0.1}>
+                                    <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${isEven ? '' : 'lg:flex-row-reverse'}`}>
+
+                                        {/* VISUAL - CLICKABLE */}
+                                        <Link href={`/services/${slug}`} className="w-full lg:w-1/2 relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl shadow-black/5 group block cursor-pointer">
+                                            <Image
+                                                src={coverImage}
+                                                alt={service.hero.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                            {/* Overlay Gradient */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+
+                                            {/* Floating Tag */}
+                                            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+                                                <span className="font-mono text-[10px] uppercase tracking-widest text-[#111]">
+                                                    {service.id} // {service.hero.tag}
+                                                </span>
+                                            </div>
+                                        </Link>
+
+                                        {/* CONTENT */}
+                                        <div className="w-full lg:w-1/2 space-y-8">
+                                            <div>
+                                                {/* TITLE - CLICKABLE */}
+                                                <Link href={`/services/${slug}`} className="block group">
+                                                    <h2 className="text-4xl lg:text-5xl font-serif text-[#111] mb-4 group-hover:text-[#A18262] transition-colors">
+                                                        {service.hero.title}
+                                                    </h2>
+                                                </Link>
+                                                <p className="text-[#666] text-lg leading-relaxed">
+                                                    {service.intro.heading}
+                                                </p>
+                                            </div>
+
+                                            {/* Feature List (Problem/Solution) */}
+                                            <div className="space-y-4 pt-4 border-t border-[#E5E5E5]">
+                                                <div className="flex items-start gap-3">
+                                                    <div className="mt-1 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                                                        <span className="text-red-500 text-xs font-bold">!</span>
+                                                    </div>
+                                                    <p className="text-sm text-[#888]">
+                                                        <strong className="text-[#444] uppercase tracking-wider text-xs mr-2">Problem:</strong>
+                                                        {slug === 'ac' ? "Leaks, noise, warm air, and high bills." :
+                                                            slug === 'plumbing' ? "Hidden leaks, low pressure, blocked drains." :
+                                                                slug === 'electrical' ? "Tripping breakers, sparking outlets, hazards." :
+                                                                    slug === 'cleaning' ? "Dust, mold, allergens, unhygienic tanks." :
+                                                                        slug === 'gas' ? "Gas smell, leaks, safety compliance issues." :
+                                                                            slug === 'stoves' ? "Uneven heat, yellow flame, burner failure." :
+                                                                                slug === 'emergency' ? "Floods, power outages, AC failure at night." :
+                                                                                    "Broken furniture, mounting issues, odd jobs."}
+                                                    </p>
+                                                </div>
+                                                <div className="flex items-start gap-3">
+                                                    <div className="mt-1 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                                        <Check className="w-3 h-3 text-green-600" />
+                                                    </div>
+                                                    <p className="text-sm text-[#888]">
+                                                        <strong className="text-[#444] uppercase tracking-wider text-xs mr-2">Solution:</strong>
+                                                        {service.hero.description}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            {/* Action */}
+                                            <div className="pt-4">
+                                                <Link
+                                                    href={`/services/${slug}`}
+                                                    className="inline-flex items-center gap-2 text-[#111] font-mono text-xs uppercase tracking-widest border-b border-[#111] pb-1 hover:text-[#A18262] hover:border-[#A18262] transition-all group"
+                                                >
+                                                    Explore {service.hero.title}
+                                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                </Link>
+                                            </div>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
 
-                            {/* Tools */}
-                            <div className="flex items-center gap-4 text-xs font-mono text-[#86868b] bg-[#F5F5F7] p-4 w-fit rounded-full">
-                                <Wrench className="w-3 h-3" />
-                                <span>EQUIPMENT: {svc.tools}</span>
+                                    </div>
+                                </SectionWrapper>
                             </div>
                         </section>
-                    ))}
-                </div>
+                    );
+                })}
             </div>
+
+            {/* 4. FOOTER CTA */}
+            <section className="py-32 bg-[#111] text-white text-center">
+                <SectionWrapper>
+                    <h2 className="text-4xl lg:text-6xl font-serif italic mb-8">
+                        Ready to experience the standard?
+                    </h2>
+                    <Link href="/contact" className="px-10 py-5 bg-white text-[#111] font-mono text-xs uppercase tracking-widest hover:bg-[#A18262] hover:text-white transition-colors rounded-sm inline-block">
+                        Book a Service Now
+                    </Link>
+                </SectionWrapper>
+            </section>
+
         </main>
     );
 }

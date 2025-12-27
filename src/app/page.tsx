@@ -43,9 +43,9 @@ export default function Home() {
 
          <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#FAFAF9]">
             <HyperHero
-               color1="#C0C0C0" // Pure Automotive Silver
-               color2="#E8E8E8" // High Gloss Silver
-               initialColor="#C0C0C0"
+               color1="#9CA3AF" // Aluminium
+               color2="#E5E7EB" // Cool Grey
+               initialColor="#E5E7EB"
             />
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">

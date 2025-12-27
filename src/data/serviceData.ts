@@ -470,76 +470,9 @@ export const serviceData: Record<string, ServicePageData> = {
         }
     },
 
-    // 07. Emergency (Renumbered)
-    emergency: {
-        id: "07",
-        slug: "emergency",
-        theme: {
-            primaryText: "text-rose-900",
-            primaryBg: "bg-rose-950",
-            secondaryBg: "bg-rose-50",
-            accentText: "text-rose-400",
-            iconBg: "bg-rose-500/10",
-            hero1: "#be123c",
-            hero2: "#fff1f2"
-        },
-        hero: {
-            tag: "SOS",
-            title: "Emergency 24/7",
-            description: "We are on the way. Right now."
-        },
-        intro: {
-            heading: "Disasters don't keep office hours. Neither do we. If there is water flooding or power out, we deploy immediately.",
-            stats: [
-                { value: "<60", label: "Mins", sub: "Arrival" },
-                { value: "24/7", label: "Open", sub: "Always" },
-                { value: "Fully", label: "Stocked", sub: "Vans" },
-                { value: "Fixed", label: "First Time", sub: "Goal" }
-            ]
-        },
-        details: [
-            {
-                id: "flood",
-                title: "Water Flood",
-                subtitle: "Containment",
-                description: "Burst pipe? Heater leak? We extract water and stop the flow immediately to protect your furniture.",
-                icon: Droplet,
-                details: ["Valve Shutoff", "Water Vac", "Pipe Repair", "Damage Control"],
-                image: "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80" // Flooded floor/water
-            },
-            {
-                id: "power",
-                title: "Power Outage",
-                subtitle: "Restoration",
-                description: "Total blackout? We bring generators if needed and trace the short circuit to restore lights.",
-                icon: Zap,
-                details: ["Trip Trace", "Bypass", "Generator", "Safety Check"],
-                image: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80" // Dark room/candle or circuit
-            },
-            {
-                id: "ac",
-                title: "AC Failure",
-                subtitle: "Heat Relief",
-                description: "AC died in July? We consider this an emergency. We carry portable ACs and fix compressors ASAP.",
-                icon: Wind,
-                details: ["Rapid Cooling", "Portable Units", "Priority Fix", "Night Service"],
-                image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80" // AC unit again (appropriate here)
-            }
-        ],
-        techSpecs: {
-            grid: [
-                { label: "SPEED", value: "MAX" },
-                { label: "TOOLS", value: "READY" },
-                { label: "TEAM", value: "AWAKE" },
-                { label: "SOLUTION", value: "NOW" }
-            ],
-            tools: "Rapid Response Kits designed for triage and containment.",
-            list: ["Stop leak", "Isolate power", "Cool down", "Clean up", "Report"]
-        }
-    },
-    // 08. Handyman
+    // 07. Handyman (Moved Up)
     handyman: {
-        id: "08",
+        id: "07",
         slug: "handyman",
         theme: {
             primaryText: "text-violet-900",
@@ -602,6 +535,74 @@ export const serviceData: Record<string, ServicePageData> = {
             ],
             tools: "Laser levels, stud finders, and impact drivers.",
             list: ["Leveling", "Stud finding", "Drilling", "Anchoring", "Touch-ups"]
+        }
+    },
+
+    // 08. Emergency (Moved Down)
+    emergency: {
+        id: "08",
+        slug: "emergency",
+        theme: {
+            primaryText: "text-rose-900",
+            primaryBg: "bg-rose-950",
+            secondaryBg: "bg-rose-50",
+            accentText: "text-rose-400",
+            iconBg: "bg-rose-500/10",
+            hero1: "#be123c",
+            hero2: "#fff1f2"
+        },
+        hero: {
+            tag: "SOS",
+            title: "Emergency 24/7",
+            description: "We are on the way. Right now."
+        },
+        intro: {
+            heading: "Disasters don't keep office hours. Neither do we. If there is water flooding or power out, we deploy immediately.",
+            stats: [
+                { value: "<60", label: "Mins", sub: "Arrival" },
+                { value: "24/7", label: "Open", sub: "Always" },
+                { value: "Fully", label: "Stocked", sub: "Vans" },
+                { value: "Fixed", label: "First Time", sub: "Goal" }
+            ]
+        },
+        details: [
+            {
+                id: "flood",
+                title: "Water Flood",
+                subtitle: "Containment",
+                description: "Burst pipe? Heater leak? We extract water and stop the flow immediately to protect your furniture.",
+                icon: Droplet,
+                details: ["Valve Shutoff", "Water Vac", "Pipe Repair", "Damage Control"],
+                image: "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80" // Flooded floor/water
+            },
+            {
+                id: "power",
+                title: "Power Outage",
+                subtitle: "Restoration",
+                description: "Total blackout? We bring generators if needed and trace the short circuit to restore lights.",
+                icon: Zap,
+                details: ["Trip Trace", "Bypass", "Generator", "Safety Check"],
+                image: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80" // Dark room/candle or circuit
+            },
+            {
+                id: "ac",
+                title: "AC Failure",
+                subtitle: "Heat Relief",
+                description: "AC died in July? We consider this an emergency. We carry portable ACs and fix compressors ASAP.",
+                icon: Wind,
+                details: ["Rapid Cooling", "Portable Units", "Priority Fix", "Night Service"],
+                image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80" // AC unit again (appropriate here)
+            }
+        ],
+        techSpecs: {
+            grid: [
+                { label: "SPEED", value: "MAX" },
+                { label: "TOOLS", value: "READY" },
+                { label: "TEAM", value: "AWAKE" },
+                { label: "SOLUTION", value: "NOW" }
+            ],
+            tools: "Rapid Response Kits designed for triage and containment.",
+            list: ["Stop leak", "Isolate power", "Cool down", "Clean up", "Report"]
         }
     }
 };

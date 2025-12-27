@@ -159,7 +159,7 @@ function FluidPlane({ color1, color2 }: { color1: string; color2: string }) {
 
     useFrame((state) => {
         if (materialRef.current) {
-            materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
+            materialRef.current.uniforms.uTime.value = state.clock.elapsedTime + 10.0;
             // Update colors dynamically if props change
             materialRef.current.uniforms.uColor1.value = new THREE.Color(color1);
             materialRef.current.uniforms.uColor2.value = new THREE.Color(color2);

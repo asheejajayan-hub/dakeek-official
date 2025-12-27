@@ -33,7 +33,8 @@ export function SmartForm() {
         setStatus("submitting");
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log("Form Data:", data);
+        // Form submission logic would go here
+        alert("Thank you! We'll contact you within 24 hours.");
         setStatus("success");
     };
 
