@@ -285,7 +285,7 @@ export default function Home() {
             </div>
 
             <Link href="/contact" className="group relative px-16 py-8 bg-[#111] text-white overflow-hidden rounded-sm transition-all hover:scale-105 active:scale-95 shadow-2xl">
-               <span className="relative z-10 font-mono text-sm uppercase tracking-[0.2em]">Restore Order</span>
+               <span className="relative z-10 font-mono text-sm uppercase tracking-[0.2em]">Book Now</span>
                <div className="absolute inset-0 bg-[#A18262] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
             </Link>
          </section>
