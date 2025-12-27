@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 
 interface ServiceCardProps {
@@ -49,6 +50,11 @@ export default function ServiceCard({
           ))}
         </ul>
 
+        {/* Emergency Interaction Hint */}
+        <div className="absolute bottom-6 animate-pulse">
+          <ArrowRight className="w-5 h-5 text-white/50" />
+        </div>
+
         <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-50" />
       </Link>
     );
@@ -78,7 +84,7 @@ export default function ServiceCard({
         <div className="w-8 h-[1px] bg-[#E5E5E5] my-4 group-hover:w-16 group-hover:bg-[#A18262]/30 transition-all duration-500" />
       </div>
 
-      <ul className="relative z-10 space-y-3 flex flex-col items-center w-full">
+      <ul className="relative z-10 space-y-3 flex flex-col items-center w-full mb-8">
         {features.map((feature, index) => (
           <li
             key={index}
@@ -88,6 +94,11 @@ export default function ServiceCard({
           </li>
         ))}
       </ul>
+
+      {/* Interaction Hint */}
+      <div className="absolute bottom-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+        <ArrowRight className="w-5 h-5 text-[#A18262]" />
+      </div>
 
       {/* Bottom corner accent ?? Maybe too much. Keeping it clean. */}
     </Link>
