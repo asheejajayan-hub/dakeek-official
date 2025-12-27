@@ -1,8 +1,12 @@
-"use client";
-
-import ServicePageLayout from "../../../components/ServicePageLayout";
+import ServicePageLayout from "../../../components/services/ServicePageLayout";
 import { serviceData } from "../../../data/serviceData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: `Dakeek | ${serviceData.stoves.hero.title}`,
+    description: serviceData.stoves.hero.description,
+};
 
 export default function StovesPage() {
-    return <ServicePageLayout data={serviceData.stoves} />;
+    return <ServicePageLayout slug="stoves" />;
 }

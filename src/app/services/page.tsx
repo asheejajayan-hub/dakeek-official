@@ -8,7 +8,7 @@ export default function Services() {
     const services = [
         {
             id: "01",
-            title: "AC & HVAC",
+            title: "AC Services",
             tagline: "Climate Calibration",
             problem: "Blowing warm air, unusual noise, water dropping, or high DEWA bills.",
             solution: "We do not just clean filters. We calibrate the entire thermodynamic cycle.",
@@ -47,16 +47,16 @@ export default function Services() {
         },
         {
             id: "04",
-            title: "Duct Cleaning",
-            tagline: "Air Quality Control",
-            problem: "Dust accumulation, moldy smells, increased allergies/asthma triggers.",
-            solution: "Rotary brush extraction and organic disinfection fogging.",
+            title: "Cleaning",
+            tagline: "Hygiene & Sanitation",
+            problem: "Dust accumulation in ducts, moldy smells, unhygienic water tanks, or post-construction mess.",
+            solution: "Deep sanitization using rotary brushes, organic fogging, and municipality-grade disinfectants.",
             specs: [
-                { label: "Method", value: "Rotary Brush" },
-                { label: "Chemical", value: "Municipality Approved" },
-                { label: "Result", value: "99.9% Clean" },
+                { label: "Ducts", value: "Rotary Brush" },
+                { label: "Tanks", value: "Chlorination" },
+                { label: "Deep Clean", value: "Steaming" },
             ],
-            tools: "Rotomax Duct Machine, Fogger"
+            tools: "Rotomax Duct Machine, Industrial Steamers"
         },
         {
             id: "05",
@@ -86,58 +86,6 @@ export default function Services() {
         },
         {
             id: "07",
-            title: "Water Tanks",
-            tagline: "Purity Assurance",
-            problem: "Discolored water, bad taste, or sediment buildup in taps.",
-            solution: "Drain, scrub, and sterilize using municipality-grade chlorine tabs.",
-            specs: [
-                { label: "Sediment", value: "Removed" },
-                { label: "Bacteria", value: "Eliminated" },
-                { label: "System", value: "Flushed" },
-            ],
-            tools: "High-Pressure Washer, Wet Vac"
-        },
-        {
-            id: "08",
-            title: "Kitchen Equipment",
-            tagline: "Culinary Uptime",
-            problem: "Commercial fridge warm, dishwasher leaking, or hood fan stopped.",
-            solution: "Component-level repair for industrial and high-end home appliances.",
-            specs: [
-                { label: "Compressor", value: "Amp Draw" },
-                { label: "Seals", value: "Vacuum Test" },
-                { label: "Motor", value: "RPM Check" },
-            ],
-            tools: "Refrigeration Guages, Electrical Tester"
-        },
-        {
-            id: "09",
-            title: "Painting",
-            tagline: "Surface Restoration",
-            problem: "Cracked walls, peeling paint, water damage stains, or faded exterior.",
-            solution: "Surface preparation, priming, and multi-coat application.",
-            specs: [
-                { label: "Finish", value: "Matte/Silk" },
-                { label: "Edges", value: "Laser Sharp" },
-                { label: "Durability", value: "Washable" },
-            ],
-            tools: "Airless Sprayer, Rollers"
-        },
-        {
-            id: "10",
-            title: "Handyman",
-            tagline: "Precision Mounting",
-            problem: "Curtain rails falling, crooked TV mounting, or furniture assembly.",
-            solution: "Laser-leveled drilling and heavy-duty anchoring systems.",
-            specs: [
-                { label: "Level", value: "Digital Laser" },
-                { label: "Anchor", value: "Load Rated" },
-                { label: "Mess", value: "Zero Dust" },
-            ],
-            tools: "Hammer Drill, Laser Level"
-        },
-        {
-            id: "11",
             title: "Emergency 24/7",
             tagline: "Rapid Response",
             problem: "Power outage, burst pipe, major gas leak, or AC failure in summer.",
@@ -148,24 +96,11 @@ export default function Services() {
                 { label: "Type", value: "Critical" },
             ],
             tools: "Rapid Response Kit"
-        },
-        {
-            id: "12",
-            title: "Custom Projects",
-            tagline: "Bespoke Solutions",
-            problem: "Renovations, weird noises, home automation, or custom fabrication.",
-            solution: "Turnkey project management from design to execution.",
-            specs: [
-                { label: "Scope", value: "Unlimited" },
-                { label: "Design", value: "In-House" },
-                { label: "Quality", value: "Premium" },
-            ],
-            tools: "Workshop, CAD Station"
         }
     ];
 
     return (
-        <main className="min-h-screen w-full bg-[#FAFAF9] text-[#111] pt-32 pb-20 relative">
+        <main className="min-h-screen w-full premium-bg text-[#111] pt-32 pb-20 relative">
             <div className="fixed top-32 left-[5vw] w-fit z-10 hidden lg:block">
                 <Link href="/" className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#86868b] hover:text-[#111] transition-colors mb-12">
                     <ArrowLeft className="w-3 h-3" /> Back
@@ -182,7 +117,7 @@ export default function Services() {
                     <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#86868b] mb-4 block">
                         Technical Specifications
                     </span>
-                    <h1 className="text-6xl font-serif font-light mb-8">
+                    <h1 className="text-6xl font-serif font-light mb-8 text-premium-shadow">
                         The Manual.
                     </h1>
                     <p className="text-lg font-light text-[#444] max-w-xl leading-relaxed">

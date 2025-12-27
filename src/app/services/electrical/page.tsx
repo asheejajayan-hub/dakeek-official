@@ -1,8 +1,12 @@
-"use client";
-
-import ServicePageLayout from "../../../components/ServicePageLayout";
+import ServicePageLayout from "../../../components/services/ServicePageLayout";
 import { serviceData } from "../../../data/serviceData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: `Dakeek | ${serviceData.electrical.hero.title}`,
+    description: serviceData.electrical.hero.description,
+};
 
 export default function ElectricalPage() {
-    return <ServicePageLayout data={serviceData.electrical} />;
+    return <ServicePageLayout slug="electrical" />;
 }

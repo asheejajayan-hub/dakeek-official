@@ -3,10 +3,10 @@ import { serviceData } from "../../../data/serviceData";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: `Dakeek | ${serviceData.ac.hero.title}`,
-    description: serviceData.ac.hero.description,
+    title: `Dakeek | ${serviceData.handyman.hero.title}`,
+    description: serviceData.handyman.hero.description,
 };
 
-export default function ACServicePage() {
-    return <ServicePageLayout slug="ac" />;
+export default function HandymanServicePage() {
+    return <ServicePageLayout slug="handyman" />;
 }

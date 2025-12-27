@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { SmoothScroll } from "../components/SmoothScroll";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { SmoothScroll } from "../components/layout/SmoothScroll";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

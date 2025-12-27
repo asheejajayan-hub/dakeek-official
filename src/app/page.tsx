@@ -1,7 +1,7 @@
 "use client";
 // HMR Trigger
 
-import { IconAC, IconDucts, IconKitchen, IconElectrical, IconPlumbing, IconTanks, IconStoves, IconGas, IconHVAC, IconAMC, IconPainting, IconEmergency } from "../components/ServiceIcons";
+import { IconAC, IconElectrical, IconPlumbing, IconStoves, IconGas, IconEmergency, IconCleaning, IconHandyman } from "../components/services/ServiceIcons";
 import { ShieldCheck, HeartHandshake, Sparkles, Award } from "lucide-react";
 
 import Link from "next/link";
@@ -10,8 +10,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-import HyperHero from "../components/HyperHero"; // The 2026 Edition
-import ServiceCard from "../components/ServiceCard";
+import HyperHero from "../components/hero/HyperHero"; // The 2026 Edition
+import ServiceCard from "../components/services/ServiceCard";
 
 
 export default function Home() {
@@ -39,35 +39,42 @@ export default function Home() {
    }, { scope: container });
 
    return (
-      <main ref={container} className="relative min-h-screen w-full selection:bg-[#A18262] selection:text-white bg-[#FAFAF9] text-[#111] overflow-x-hidden">
+      <main ref={container} className="relative min-h-screen w-full selection:bg-[#A18262] selection:text-white premium-bg text-[#111] overflow-x-hidden">
 
          <section id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#FAFAF9]">
             <HyperHero
-               color1="#dbdce1" // Slate-ish/Silver
-               color2="#f5f5f4" // Warm Grey
-               initialColor="#dbdce1" // PLATINUM/SILVER - Fixed per user feedback
+               color1="#C0C0C0" // Pure Automotive Silver
+               color2="#E8E8E8" // High Gloss Silver
+               initialColor="#C0C0C0"
             />
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-               <p className="hero-sub font-mono text-xs md:text-sm uppercase tracking-[0.3em] mb-6 backdrop-blur-sm inline-block px-4 py-2 rounded-full border border-black/5 text-[#A18262] bg-white/50">
+               <p className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] mb-4 md:mb-6 backdrop-blur-sm inline-block px-4 py-2 rounded-full border border-black/5 text-[#444] bg-white/50">
                   Precision Home Services
                </p>
-               <h1 className="hero-line-1 text-7xl md:text-[9rem] font-serif italic tracking-tighter mb-2 leading-[0.8] text-[#111]">
+               <h1 className="hero-line-1 text-6xl md:text-9xl font-sans tracking-tighter mb-6 md:mb-8 leading-[0.9] text-[#111]">
                   Dakeek.
                </h1>
-               <h2 className="hero-line-2 text-3xl md:text-5xl font-sans font-light tracking-tight mb-8 text-[#444]">
+               <p className="hero-line-2 text-lg md:text-2xl font-light max-w-xl mx-auto leading-relaxed backdrop-blur-sm text-[#444] mb-12">
                   The Science of Maintenance.
-               </h2>
+               </p>
 
-               <div className="hero-cta flex flex-col md:flex-row gap-4 justify-center items-center mt-12">
-                  <Link href="/contact" className="group relative px-12 py-4 bg-[#111] text-white overflow-hidden rounded-full transition-all hover:scale-105">
-                     <span className="relative z-10 font-mono text-xs uppercase tracking-[0.2em]">Book Now</span>
+               <div className="hero-cta flex flex-col md:flex-row gap-4 justify-center items-center">
+                  <Link href="/contact" className="group relative px-12 py-4 bg-[#111] text-white overflow-hidden rounded-full transition-all hover:scale-105 shadow-xl">
+                     <span className="relative z-10 font-mono text-xs font-medium uppercase tracking-[0.2em]">Book Now</span>
                      <div className="absolute inset-0 bg-[#A18262] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                   </Link>
-                  <Link href="/services" className="px-12 py-4 border border-[#111]/10 text-[#666] rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:bg-white/50 transition-colors backdrop-blur-sm">
+                  <Link href="/services" className="px-12 py-4 border border-black/10 text-[#111] rounded-full font-mono text-xs font-medium uppercase tracking-[0.2em] bg-white/40 hover:bg-white/80 transition-all backdrop-blur-sm shadow-sm hover:shadow-md">
                      Explore Services
                   </Link>
                </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 text-[#999] animate-bounce">
+               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 9l6 6 6-6" />
+               </svg>
             </div>
          </section>
 
@@ -129,28 +136,10 @@ export default function Home() {
                      features: ["Power Distribution", "Load Balancing", "Safety Systems"]
                   },
                   {
-                     title: "Painting",
-                     href: "/services/painting",
-                     icon: IconPainting,
-                     features: ["Surface Finish", "Restoration", "Waterproofing"]
-                  },
-                  {
-                     title: "Ducts",
-                     href: "/services/ducts",
-                     icon: IconDucts,
-                     features: ["Air Quality", "Sanitization", "Flow Optimization"]
-                  },
-                  {
-                     title: "Tanks",
-                     href: "/services/tanks",
-                     icon: IconTanks,
-                     features: ["Hygiene Control", "Sterilization", "Inspection"]
-                  },
-                  {
-                     title: "Stoves",
-                     href: "/services/stoves",
-                     icon: IconStoves,
-                     features: ["Gas Appliances", "Calibration", "Burner Service"]
+                     title: "Cleaning",
+                     href: "/services/cleaning",
+                     icon: IconCleaning,
+                     features: ["Deep Cleaning", "Water Tanks", "Duct Sanitization"]
                   },
                   {
                      title: "Gas",
@@ -159,22 +148,16 @@ export default function Home() {
                      features: ["Central Systems", "Safety Valves", "Leak Detection"]
                   },
                   {
-                     title: "Kitchen",
-                     href: "/services/kitchen",
-                     icon: IconKitchen,
-                     features: ["Exhaust Degreasing", "Fan Maintenance", "Code Compliance"]
+                     title: "Stoves",
+                     href: "/services/stoves",
+                     icon: IconStoves,
+                     features: ["Gas Appliances", "Calibration", "Burner Service"]
                   },
                   {
-                     title: "HVAC",
-                     href: "/services/hvac",
-                     icon: IconHVAC,
-                     features: ["Commercial Chilled Water", "FAHU / AHU", "Tower Systems"]
-                  },
-                  {
-                     title: "AMC",
-                     href: "/services/amc",
-                     icon: IconAMC,
-                     features: ["Annual Contracts", "Priority Service", "Preventative Care"]
+                     title: "Handyman",
+                     href: "/services/handyman",
+                     icon: IconHandyman,
+                     features: ["Mounting", "Assembly", "General Repairs"]
                   },
                   {
                      title: "Emergency",
